@@ -18,6 +18,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgument
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import org.koin.android.viewmodel.ext.android.viewModel
 import sanaebadi.info.montagithub.R
 import sanaebadi.info.montagithub.databinding.FragmentHomeBinding
 import sanaebadi.info.montagithub.viewModel.MainViewModel
@@ -28,7 +31,7 @@ import sanaebadi.info.montagithub.viewModel.MainViewModel
  */
 class HomeFragment : Fragment() {
 
-    lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -45,9 +48,6 @@ class HomeFragment : Fragment() {
     private var website: String? = null
 
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         binding.lifecycleOwner = this
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
 
         return binding.root
     }
@@ -66,40 +66,40 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        if (!isOnline()){
+        if (!isOnline()) {
             navController!!.navigate(R.id.action_homeFragment_to_networkFragment)
         }
 
 
-        binding.btnGenerate.setOnClickListener {
+        viewModel.user.observe(viewLifecycleOwner, Observer { user ->
+            println("DEBUG : ${user}")
+            name = user.name
+            bio = user.bio
+            image = user.avatarUrl
+            website = user.webSite
 
-            binding.progressbar.visibility = View.VISIBLE
+
+            binding.progressbar.visibility = View.GONE
+
+            val bundel = bundleOf(
+                "name" to name,
+                "bio" to bio,
+                "image" to image, "website" to website
+            )
+
+            navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundel)
+        })
+
+
+
+        binding.btnGenerate.setOnClickListener {
 
             if (binding.edtUserName.text.toString().trim().isNotEmpty()) {
 
-                viewModel.user.observe(viewLifecycleOwner, Observer { user ->
-                    println("DEBUG : ${user}")
-                    name = user.name
-                    bio = user.bio
-                    image = user.avatarUrl
-                    website = user.webSite
-
-                    println("USER : name = $name / bio = $bio / image = $image / website = $website")
-
-
-                })
+                binding.progressbar.visibility = View.VISIBLE
 
                 viewModel.setUsername(binding.edtUserName.text.toString())
 
-                val bundel = bundleOf(
-                    "name" to name,
-                    "bio" to bio,
-                    "image" to image, "website" to website
-                )
-
-                binding.progressbar.visibility = View.GONE
-
-                navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundel)
 
             } else {
                 Toast.makeText(
@@ -121,7 +121,8 @@ class HomeFragment : Fragment() {
 
 
     private fun isOnline(): Boolean {
-        val connectivityManager = activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }

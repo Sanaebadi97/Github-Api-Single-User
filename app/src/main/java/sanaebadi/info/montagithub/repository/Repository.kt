@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import sanaebadi.info.montagithub.api.ApiService
 import sanaebadi.info.montagithub.api.RetrofitClient
 import sanaebadi.info.montagithub.model.User
 
@@ -18,7 +19,7 @@ object Repository {
                 super.onActive()
                 job?.let { theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        val user = RetrofitClient.apiService.getUser(username)
+                        val user = RetrofitClient.createWebAPI<ApiService>().getUser(username)
                         withContext(Main) {
                             value = user
                             theJob.complete()
