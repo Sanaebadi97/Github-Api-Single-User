@@ -67,5 +67,19 @@
             tools:text="@string/app_name" />
 
 
+        <Button
+            android:id="@+id/btn_test_another"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/do_you_want_test_again_click_me"
+            android:background="@android:color/holo_blue_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintTop_toBottomOf="@id/txt_blog" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

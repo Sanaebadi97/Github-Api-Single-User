@@ -15,4 +15,5 @@
     <string name="error_fill_username">Enter at least one username !</string>
     <string name="try_now">Try Now !</string>
     <string name="no_internt_check_your_connection_and_click_on_try_now">No internt , Check your connection and click on try now !</string>
+    <string name="do_you_want_test_again_click_me">Do you want Test again ? Click me</string>
 </resources>

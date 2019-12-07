@@ -31,6 +31,7 @@ buildscript {
         version_coroutines = "1.2.1"
         version_material = "1.2.0-alpha02"
         version_glide = "4.10.0"
+        version_koin = "2.0.0"
     }
 }
 

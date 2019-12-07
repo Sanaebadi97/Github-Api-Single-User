@@ -12,7 +12,7 @@ object RetrofitClient {
 
     const val BASE_URL = "https://api.github.com/"
 
-     val moshi = Moshi.Builder()
+    val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import sanaebadi.info.montagithub.R
@@ -25,6 +27,8 @@ class DetailsFragment : Fragment() {
     private var image: String? = null
     private var website: String? = null
 
+
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +60,17 @@ class DetailsFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
+
+        binding.btnTestAnother.setOnClickListener{
+            navController!!.navigate(R.id.action_detailsFragment_to_homeFragment)
+        }
+
     }
 
 
