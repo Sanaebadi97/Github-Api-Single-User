@@ -1,18 +1,18 @@
 # Github-Api-Single-User
 
 
-Retrofit
+- Retrofit
 
-Koin
+- Koin
 
-LiveData
+- LiveData
 
-ViewModel 
+ -ViewModel 
 
-Moshi 
+- Moshi 
 
-Coroutines 
+- Coroutines 
 
-Glide 
+- Glide 
 
-Navigation Component
+- Navigation Component
