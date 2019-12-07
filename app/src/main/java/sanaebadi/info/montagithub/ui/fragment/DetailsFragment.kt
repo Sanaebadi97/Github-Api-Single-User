@@ -62,6 +62,8 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
+
+    //Navigate to home fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

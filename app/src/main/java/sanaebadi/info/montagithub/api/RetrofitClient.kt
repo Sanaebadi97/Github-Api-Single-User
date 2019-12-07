@@ -12,16 +12,18 @@ object RetrofitClient {
 
     const val BASE_URL = "https://api.github.com/"
 
+    //use moshi for parse json
     val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 
+    //client
     val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         .build()
 
-
+//create webservice
     inline fun <reified T> createWebAPI(): T {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

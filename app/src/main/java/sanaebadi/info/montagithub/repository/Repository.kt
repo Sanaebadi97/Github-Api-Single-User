@@ -19,6 +19,8 @@ object Repository {
                 super.onActive()
                 job?.let { theJob ->
                     CoroutineScope(IO + theJob).launch {
+
+                        //fetch data from web service here
                         val user = RetrofitClient.createWebAPI<ApiService>().getUser(username)
                         withContext(Main) {
                             value = user
@@ -32,6 +34,7 @@ object Repository {
 
     }
 
+    //cancel the job
     fun cancelJob() {
         job?.cancel()
     }

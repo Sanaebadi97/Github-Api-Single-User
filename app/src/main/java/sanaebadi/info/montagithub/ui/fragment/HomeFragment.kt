@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
         }
 
 
+//get data from view model
         viewModel.user.observe(viewLifecycleOwner, Observer { user ->
             println("DEBUG : ${user}")
             name = user.name
@@ -87,6 +88,7 @@ class HomeFragment : Fragment() {
                 "image" to image, "website" to website
             )
 
+            //navigate to details fragment with bundle
             navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundel)
         })
 
@@ -120,6 +122,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    //check network access
     private fun isOnline(): Boolean {
         val connectivityManager =
             activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

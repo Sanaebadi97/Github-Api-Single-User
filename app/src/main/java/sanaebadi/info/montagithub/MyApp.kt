@@ -7,6 +7,8 @@ import sanaebadi.info.montagithub.di.myModule
 class MyApp: Application() {
     override fun onCreate() {
         super.onCreate()
+
+        //use koin and start it here
         startKoin {
             modules(myModule)
         }
