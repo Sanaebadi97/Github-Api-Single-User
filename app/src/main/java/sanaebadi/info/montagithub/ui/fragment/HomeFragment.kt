@@ -1,6 +1,10 @@
 package sanaebadi.info.montagithub.ui.fragment
 
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +45,9 @@ class HomeFragment : Fragment() {
     private var website: String? = null
 
 
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +66,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
+        if (!isOnline()){
+            navController!!.navigate(R.id.action_homeFragment_to_networkFragment)
+        }
+
+
         binding.btnGenerate.setOnClickListener {
+
+            binding.progressbar.visibility = View.VISIBLE
+
             if (binding.edtUserName.text.toString().trim().isNotEmpty()) {
 
                 viewModel.user.observe(viewLifecycleOwner, Observer { user ->
@@ -82,6 +97,7 @@ class HomeFragment : Fragment() {
                     "image" to image, "website" to website
                 )
 
+                binding.progressbar.visibility = View.GONE
 
                 navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundel)
 
@@ -101,5 +117,12 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.cancelJob()
+    }
+
+
+    private fun isOnline(): Boolean {
+        val connectivityManager = activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
     }
 }

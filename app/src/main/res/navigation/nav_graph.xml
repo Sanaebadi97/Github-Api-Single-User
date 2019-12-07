@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="name"
             android:defaultValue="None"
@@ -29,10 +33,21 @@
             android:name="image"
             android:defaultValue="None"
             app:argType="string" />
+        <action
+            android:id="@+id/action_homeFragment_to_networkFragment"
+            app:destination="@id/networkFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="sanaebadi.info.montagithub.ui.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/networkFragment"
+        android:name="sanaebadi.info.montagithub.ui.fragment.NetworkFragment"
+        android:label="NetworkFragment" >
+        <action
+            android:id="@+id/action_networkFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

@@ -13,4 +13,6 @@
     <string name="github_profile">GitHub Profile</string>
     <string name="website">Website</string>
     <string name="error_fill_username">Enter at least one username !</string>
+    <string name="try_now">Try Now !</string>
+    <string name="no_internt_check_your_connection_and_click_on_try_now">No internt , Check your connection and click on try now !</string>
 </resources>
