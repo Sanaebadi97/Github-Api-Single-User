@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MontaGithub</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="generate">GENERATE NOW</string>
+    <string name="enter_your_github_username_and_click_on_generate">Enter your Github username and click on generate</string>
+    <string name="my_github_r_sum">GITHUB USERS</string>
+    <string name="desc">Welcome , Just Write Github username ,  and get her/his information :)</string>
+    <string name="username">MAX HOWELL</string>
+    <string name="sub_title">PASSIONATE GITHUB USER</string>
+    <string name="github_profile">GitHub Profile</string>
+    <string name="website">Website</string>
+    <string name="error_fill_username">Enter at least one username !</string>
+</resources>
