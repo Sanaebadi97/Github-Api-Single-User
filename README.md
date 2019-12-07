@@ -7,7 +7,7 @@
 
 - LiveData
 
- -ViewModel 
+ - ViewModel 
 
 - Moshi 
 
