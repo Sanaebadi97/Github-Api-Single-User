@@ -14,7 +14,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "sanaebadi.info.montagithub"
+        applicationId "github.com.githubuser"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -28,9 +28,7 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
-    }
+
 }
 
 dependencies {

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="sanaebadi.info.montagithub.ui.fragment.HomeFragment"
+        android:name="github.com.githubuser.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="sanaebadi.info.montagithub.ui.fragment.DetailsFragment"
+        android:name="github.com.githubuser.ui.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/networkFragment"
-        android:name="sanaebadi.info.montagithub.ui.fragment.NetworkFragment"
+        android:name="github.com.githubuser.ui.fragment.NetworkFragment"
         android:label="NetworkFragment" >
         <action
             android:id="@+id/action_networkFragment_to_homeFragment2"
