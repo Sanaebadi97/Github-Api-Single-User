@@ -40,12 +40,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
 
-
-
-        return view
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
 
@@ -69,14 +66,25 @@ class HomeFragment : Fragment() {
 
             progressbar.visibility = View.GONE
 
-            val bundel = bundleOf(
-                "name" to name,
-                "bio" to bio,
-                "image" to image, "website" to website
-            )
+            if (name != null && bio != null && image != null && website != null) {
+                val bundle = bundleOf(
+                    "name" to name,
+                    "bio" to bio,
+                    "image" to image, "website" to website
+                )
 
-            //navigate to details fragment with bundle
-            navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundel)
+                //navigate to details fragment with bundle
+                navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+            } else {
+
+                Toast.makeText(
+                    activity,
+                    getString(R.string.user_not_valid),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+
+            }
         })
 
 
@@ -85,7 +93,8 @@ class HomeFragment : Fragment() {
 
             if (edt_user_name.text.toString().trim().isNotEmpty()) {
 
-              progressbar.visibility = View.VISIBLE
+                progressbar.visibility = View.VISIBLE
+
 
                 viewModel.setUsername(edt_user_name.text.toString())
 

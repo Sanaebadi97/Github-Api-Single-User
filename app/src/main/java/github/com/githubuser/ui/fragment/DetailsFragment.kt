@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
@@ -50,19 +51,29 @@ class DetailsFragment : Fragment() {
         val txtBlog = view.findViewById<AppCompatTextView>(R.id.txt_blog)
         val imgUser = view.findViewById<AppCompatImageView>(R.id.img_user)
 
-        txtName.text = name
-        txtBio.text = bio
-        txtBlog.text = website
+        if (name != null && bio != null && image != null && website != null) {
+            txtName.text = name
+            txtBio.text = bio
+            txtBlog.text = website
 
-        Glide.with(this)
-            .load(image)
-            .apply(
-                RequestOptions().optionalCircleCrop()
-                    .placeholder(R.drawable.place_holder)
-                    .error(R.drawable.error_image)
+            Glide.with(this)
+                .load(image)
+                .apply(
+                    RequestOptions().optionalCircleCrop()
+                        .placeholder(R.drawable.place_holder)
+                        .error(R.drawable.error_image)
+                )
+                .into(imgUser)
+
+        } else {
+            Toast.makeText(
+                activity,
+                getString(R.string.user_not_valid),
+                Toast.LENGTH_SHORT
             )
-            .into(imgUser)
+                .show()
 
+        }
 
         return view
     }

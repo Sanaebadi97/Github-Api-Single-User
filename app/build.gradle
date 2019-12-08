@@ -66,10 +66,8 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
 
-    //moshi
-    implementation "com.squareup.moshi:moshi:$version_moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
 
     //glide
@@ -78,5 +76,7 @@ dependencies {
 
     //koin
     implementation "org.koin:koin-android-viewmodel:$version_koin"
+
+
 
 }

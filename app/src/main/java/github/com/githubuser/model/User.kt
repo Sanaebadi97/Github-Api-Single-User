@@ -1,22 +1,22 @@
 package github.com.githubuser.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class User(
 
 
-    @Json(name = "name")
+    @SerializedName("name")
     val name: String,
 
 
-    @Json(name = "blog")
+    @SerializedName("blog")
     val webSite: String,
 
-    @Json(name = "avatar_url")
+    @SerializedName("avatar_url")
     val avatarUrl: String,
 
-    @Json(name = "bio")
+    @SerializedName("bio")
     val bio: String
 
 
-    )
+)
