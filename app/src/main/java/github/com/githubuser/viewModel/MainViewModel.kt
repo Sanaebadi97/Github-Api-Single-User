@@ -17,7 +17,8 @@ class MainViewModel : ViewModel() {
 
     }
 
-    private val _name: MutableLiveData<String> = MutableLiveData()
+
+    val _name: MutableLiveData<String> = MutableLiveData()
 
     val name: LiveData<String>
         get() = _name

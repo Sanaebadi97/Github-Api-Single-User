@@ -9,12 +9,24 @@ import java.util.concurrent.TimeUnit
 object RetrofitClient {
 
     const val BASE_URL = "https://api.github.com/"
+    public var responsCode: Int? = null
 
 
     //client
     val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
+        .addInterceptor {
+
+            val request = it.request()
+            val response = it.proceed(request)
+
+            responsCode = response.code()
+
+
+
+            return@addInterceptor response
+        }
         .build()
 
     //create webservice

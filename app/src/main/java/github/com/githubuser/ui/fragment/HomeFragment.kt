@@ -14,6 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import github.com.githubuser.R
+import github.com.githubuser.api.RetrofitClient
+import github.com.githubuser.repository.Repository
 import github.com.githubuser.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,7 +42,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -89,12 +90,14 @@ class HomeFragment : Fragment() {
 
 
 
+
+
+
         btn_generate.setOnClickListener {
 
             if (edt_user_name.text.toString().trim().isNotEmpty()) {
 
                 progressbar.visibility = View.VISIBLE
-
 
                 viewModel.setUsername(edt_user_name.text.toString())
 
