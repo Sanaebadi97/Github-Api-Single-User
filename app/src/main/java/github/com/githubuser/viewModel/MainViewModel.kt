@@ -42,6 +42,12 @@ class MainViewModel : ViewModel() {
         get() = _image
 
 
+    private val _login: MutableLiveData<String> = MutableLiveData()
+
+    val login: LiveData<String>
+        get() = _login
+
+
     fun setUsername(userId: String) {
         if (_username.value == userId) {
             return

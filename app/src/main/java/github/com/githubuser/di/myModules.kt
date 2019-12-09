@@ -1,6 +1,6 @@
 package github.com.githubuser.di
 
-import github.com.githubuser.viewModel.DetailsMainModel
+import github.com.githubuser.viewModel.RepoViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import github.com.githubuser.viewModel.MainViewModel
@@ -10,5 +10,5 @@ import github.com.githubuser.viewModel.MainViewModel
 val myModule = module {
 
     viewModel { MainViewModel() }
-    viewModel { DetailsMainModel() }
+    viewModel { RepoViewModel() }
 }

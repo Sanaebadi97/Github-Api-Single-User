@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import github.com.githubuser.model.Repo
 import github.com.githubuser.repository.Repository
 
-class DetailsMainModel : ViewModel() {
+class RepoViewModel : ViewModel() {
     private val _username: MutableLiveData<String> = MutableLiveData()
 
     val repos: LiveData<List<Repo>> = Transformations.switchMap(_username) { userId ->

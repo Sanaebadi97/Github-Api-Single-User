@@ -88,14 +88,6 @@
         app:layout_constraintTop_toBottomOf="@id/btn_test_another" />
 
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_repos_list" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

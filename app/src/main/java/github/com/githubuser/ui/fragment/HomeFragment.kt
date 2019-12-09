@@ -14,8 +14,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import github.com.githubuser.R
-import github.com.githubuser.api.RetrofitClient
-import github.com.githubuser.repository.Repository
 import github.com.githubuser.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -67,17 +65,24 @@ class HomeFragment : Fragment() {
             login = user.login
 
 
+
+
             progressbar.visibility = View.GONE
 
-            if (name != null && bio != null && image != null && website != null) {
+            if (name != null && bio != null && image != null && website != null && login != null) {
                 val bundle = bundleOf(
                     "name" to name,
                     "bio" to bio,
-                    "image" to image, "website" to website , "login" to login
+                    "image" to image, "website" to website, "login" to login
                 )
 
+                println("LOGIN ${user.login}")
+                println("LOGIN $bundle")
                 //navigate to details fragment with bundle
                 navController!!.navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+
+
+
             } else {
 
                 Toast.makeText(

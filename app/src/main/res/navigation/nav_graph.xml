@@ -41,11 +41,25 @@
         android:name="github.com.githubuser.ui.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
+
+
         <action
             android:id="@+id/action_detailsFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+
+        <argument
+            android:name="login"
+            app:argType="string"
+            android:defaultValue="None" />
+
+        <action
+            android:id="@+id/action_detailsFragment_to_reposListFragment"
+            app:destination="@id/reposListFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+
     </fragment>
     <fragment
         android:id="@+id/networkFragment"
@@ -54,5 +68,12 @@
         <action
             android:id="@+id/action_networkFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reposListFragment"
+        android:name="github.com.githubuser.ui.fragment.ReposListFragment"
+        android:label="fragment_repos_list"
+        tools:layout="@layout/fragment_repos_list" >
+
     </fragment>
 </navigation>
