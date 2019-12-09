@@ -9,12 +9,18 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import github.com.githubuser.R
+import github.com.githubuser.viewModel.DetailsMainModel
+import github.com.githubuser.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.fragment_details.progressbar
+import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 /**
@@ -27,6 +33,9 @@ class DetailsFragment : Fragment() {
     private var bio: String? = null
     private var image: String? = null
     private var website: String? = null
+    private var login: String? = null
+
+    private val viewModel: DetailsMainModel by viewModel()
 
 
     private var navController: NavController? = null
@@ -37,6 +46,8 @@ class DetailsFragment : Fragment() {
         bio = arguments!!.getString("bio")
         image = arguments!!.getString("image")
         website = arguments!!.getString("website")
+        website = arguments!!.getString("website")
+        login = arguments!!.getString("login")
     }
 
     override fun onCreateView(
@@ -89,7 +100,26 @@ class DetailsFragment : Fragment() {
             navController!!.navigate(R.id.action_detailsFragment_to_homeFragment)
         }
 
+        //observe view model
+
+        viewModel.repos.observe(viewLifecycleOwner, Observer { repos ->
+            println("REPOS $repos")
+
+            progressbar.visibility = View.GONE
+
+            progressbar.visibility = View.VISIBLE
+
+        })
+
+        btn_repos_list.setOnClickListener {
+            viewModel.setUsername(login!!)
+        }
+
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.cancelJob()
+    }
 
 }

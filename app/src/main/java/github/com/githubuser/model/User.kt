@@ -16,7 +16,12 @@ data class User(
     val avatarUrl: String,
 
     @SerializedName("bio")
-    val bio: String
+    val bio: String,
+
+    @SerializedName("login")
+    val login: String
+
+
 
 
 

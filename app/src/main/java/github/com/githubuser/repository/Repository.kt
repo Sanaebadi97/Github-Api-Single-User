@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import github.com.githubuser.api.ApiService
 import github.com.githubuser.api.RetrofitClient
+import github.com.githubuser.model.Repo
 import github.com.githubuser.model.User
 
 object Repository {
@@ -24,6 +25,28 @@ object Repository {
                         val user = RetrofitClient.createWebAPI<ApiService>().getUser(username)
                         withContext(Main) {
                             value = user
+                            theJob.complete()
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+    fun getRepoes(username: String): LiveData<List<Repo>> {
+        job = Job()
+
+        return object : LiveData<List<Repo>>() {
+            override fun onActive() {
+                super.onActive()
+                job?.let { theJob ->
+                    CoroutineScope(IO + theJob).launch {
+
+                        //fetch data from web service here
+                        val repoes = RetrofitClient.createWebAPI<ApiService>().getRepoes(username)
+                        withContext(Main) {
+                            value = repoes
                             theJob.complete()
                         }
                     }

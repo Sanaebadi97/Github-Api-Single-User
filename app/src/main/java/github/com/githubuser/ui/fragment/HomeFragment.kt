@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
     private var bio: String? = null
     private var image: String? = null
     private var website: String? = null
+    private var login: String? = null
 
 
     override fun onCreateView(
@@ -63,6 +64,7 @@ class HomeFragment : Fragment() {
             bio = user.bio
             image = user.avatarUrl
             website = user.webSite
+            login = user.login
 
 
             progressbar.visibility = View.GONE
@@ -71,7 +73,7 @@ class HomeFragment : Fragment() {
                 val bundle = bundleOf(
                     "name" to name,
                     "bio" to bio,
-                    "image" to image, "website" to website
+                    "image" to image, "website" to website , "login" to login
                 )
 
                 //navigate to details fragment with bundle
