@@ -30,6 +30,8 @@ I have to say that there is a web service by **Github Api** that you can use for
 
 Hoping to Fork and expand :heart: 
 
-In the next update I will write a list of each **user's Repo**. Other things are up to you, friends.
+UPDATE 
+----
+I got the list of repositories !
 
 thank you :smiley::kissing_closed_eyes:
