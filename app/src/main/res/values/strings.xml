@@ -16,4 +16,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_not_valid">User name not valid . please try another name</string>
     <string name="did_you_want_to_see_my_repos">Did you want to see my Repos ?!</string>
+    <string name="repo_name">Repo name</string>
+    <string name="oprn_repo_in_browser">Oprn Repo in Browser</string>
 </resources>

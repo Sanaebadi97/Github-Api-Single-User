@@ -69,14 +69,12 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
 
 
-
     //glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$version_glide"
 
     //koin
     implementation "org.koin:koin-android-viewmodel:$version_koin"
-
 
 
 }
