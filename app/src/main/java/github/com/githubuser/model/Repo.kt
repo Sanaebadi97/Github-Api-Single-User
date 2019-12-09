@@ -14,6 +14,6 @@ data class Repo(
     @SerializedName("description")
     val repoDesc: String,
 
-    @SerializedName("url")
+    @SerializedName("html_url")
     val repoUrl: String
 )

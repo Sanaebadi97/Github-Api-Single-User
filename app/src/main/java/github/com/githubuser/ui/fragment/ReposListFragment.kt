@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import github.com.githubuser.R
-import github.com.githubuser.model.Repo
 import github.com.githubuser.ui.adapter.RepoAdapter
 import github.com.githubuser.viewModel.RepoViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.progressbar
+import kotlinx.android.synthetic.main.fragment_repos_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -24,7 +27,6 @@ class ReposListFragment : Fragment() {
 
     private val viewModel: RepoViewModel by viewModel()
 
-    var repoList: List<Repo>? = null
 
     private var login: String? = null
 
@@ -42,18 +44,24 @@ class ReposListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_repos_list, container, false)
         val rvRepoList = view.findViewById<RecyclerView>(R.id.rv_repos)
+        val progressbar = view.findViewById<ProgressBar>(R.id.progressbar)
+
+        progressbar.visibility = View.VISIBLE
 
         viewModel.repos.observe(viewLifecycleOwner, Observer { repos ->
             println("REPOS $repos")
+
+
             repoAdapter = RepoAdapter(repos)
             rvRepoList.setHasFixedSize(true)
             rvRepoList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             rvRepoList.adapter = repoAdapter
-
+            progressbar.visibility = View.GONE
 
         })
 
         viewModel.setUsername(login!!)
+
 
 
 
