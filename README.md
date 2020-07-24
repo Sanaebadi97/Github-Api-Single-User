@@ -33,7 +33,7 @@ Hoping to Fork and expand :heart:
 
 UPDATE 
 ----
-I got the list of repositories !
+I got the list of **repositories** !
 
 NOTE : Design it please :)
 
