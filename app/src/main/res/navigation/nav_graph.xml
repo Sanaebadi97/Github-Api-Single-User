@@ -69,6 +69,7 @@
             android:id="@+id/action_networkFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
     </fragment>
+    
     <fragment
         android:id="@+id/reposListFragment"
         android:name="github.com.githubuser.ui.fragment.ReposListFragment"
